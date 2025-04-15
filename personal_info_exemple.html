@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме | Иван Иванов | Frontend-разработчик</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset и базовые стили */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Шапка */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+                justify-content: space-between;
+            }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .profile-img {
+                margin-bottom: 0;
+                margin-right: 2rem;
+            }
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            color: var(--light-color);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .social-links {
+                justify-content: flex-start;
+            }
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Основной контент */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        @media (min-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        /* Боковая панель */
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-section h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* Контактная информация */
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-info i {
+            margin-right: 0.8rem;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Навыки */
+        .skill {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Основная часть */
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* Опыт работы */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -43px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .timeline-subtitle {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Образование */
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-degree {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-institution {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .education-year {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Collapsible блок */
+        .collapsible {
+            background-color: white;
+            color: var(--secondary-color);
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .collapsible:hover {
+            background-color: #f1f1f1;
+        }
+
+        .collapsible::after {
+            content: '\002B';
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .active::after {
+            content: '\2212';
+        }
+
+        .collapsible-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 4px 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* Портфолио */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            height: 100%;
+        }
+
+        .portfolio-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Кнопка "Наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Фото Ивана Иванова" class="profile-img">
+                <div class="header-text">
+                    <h1>Иван Иванов</h1>
+                    <p>Frontend-разработчик</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container main-content">
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <section class="sidebar-section">
+                <h2>Контактная информация</h2>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> +7 (123) 456-78-90</li>
+                    <li><i class="fas fa-envelope"></i> ivan.ivanov@example.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Москва, Россия</li>
+                    <li><i class="fas fa-globe"></i> <a href="#">ivanov-portfolio.com</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section">
+                <h2>Навыки</h2>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>HTML/CSS</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>JavaScript</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>React</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>Vue.js</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>Node.js</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h2>Языки</h2>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>Русский</span>
+                        <span>Родной</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span>Английский</span>
+                        <span>B2</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Основная часть -->
+        <div class="content">
+            <section class="section">
+                <h2>Обо мне</h2>
+                <p>Привет! Я frontend-разработчик с 5-летним опытом создания современных, отзывчивых и удобных веб-приложений. Специализируюсь на JavaScript, React и Vue.js, но также имею опыт работы с бэкенд-технологиями.</p>
+                <p>Я увлечен созданием чистого, эффективного кода и красивых пользовательских интерфейсов. Постоянно изучаю новые технологии и улучшаю свои навыки.</p>
+            </section>
+
+            <section class="section">
+                <h2>Опыт работы</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - Настоящее время</div>
+                        <h3 class="timeline-title">Senior Frontend Developer</h3>
+                        <p class="timeline-subtitle">TechSolutions Inc., Москва</p>
+                        <p>Разработка и поддержка сложных веб-приложений с использованием React и Redux. Оптимизация производительности и улучшение пользовательского опыта.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2017 - 2020</div>
+                        <h3 class="timeline-title">Frontend Developer</h3>
+                        <p class="timeline-subtitle">WebArt Studio, Москва</p>
+                        <p>Создание адаптивных веб-сайтов и интерфейсов. Работа в команде с дизайнерами и бэкенд-разработчиками.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015 - 2017</div>
+                        <h3 class="timeline-title">Junior Web Developer</h3>
+                        <p class="timeline-subtitle">Freelance</p>
+                        <p>Разработка сайтов для малого бизнеса. Верстка по макетам, создание простых веб-приложений.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Образование</h2>
+                <div class="education-item">
+                    <div class="education-degree">Магистр компьютерных наук</div>
+                    <div class="education-institution">Московский государственный университет</div>
+                    <div class="education-year">2013 - 2015</div>
+                </div>
+                <div class="education-item">
+                    <div class="education-degree">Бакалавр информационных технологий</div>
+                    <div class="education-institution">Московский политехнический университет</div>
+                    <div class="education-year">2009 - 2013</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Дополнительная информация</h2>
+                <button type="button" class="collapsible">Сертификаты</button>
+                <div class="collapsible-content">
+                    <ul>
+                        <li>Advanced React - Udemy, 2022</li>
+                        <li>JavaScript Algorithms and Data Structures - freeCodeCamp, 2021</li>
+                        <li>Responsive Web Design - freeCodeCamp, 2020</li>
+                    </ul>
+                </div>
+
+                <button type="button" class="collapsible">Хобби и интересы</button>
+                <div class="collapsible-content">
+                    <p>В свободное время люблю участвовать в хакатонах, читать техническую литературу и изучать новые технологии. Также увлекаюсь фотографией и велоспортом.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Портфолио</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://source.unsplash.com/random/600x400?webapp" alt="Веб-приложение" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Корпоративный портал</h3>
+                            <p>React, Redux, Node.js</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://source.unsplash.com/random/600x400?ecommerce" alt="Интернет-магазин" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Интернет-магазин</h3>
+                            <p>Vue.js, Vuex, Firebase</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://source.unsplash.com/random/600x400?dashboard" alt="Админ-панель" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Админ-панель</h3>
+                            <p>React, Material UI, REST API</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Иван Иванов. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <noscript>
+        <style>
+            .collapsible-content {
+                max-height: none !important;
+                display: block !important;
+            }
+        </style>
+    </noscript>
+
+    <script>
+        // Collapsible блоки
+        const collapsibles = document.querySelectorAll('.collapsible');
+        collapsibles.forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } 
+            });
+        });
+
+        // Кнопка "Наверх"
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Анимация прогресс-баров
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
